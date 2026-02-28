@@ -1,15 +1,78 @@
-# TalentScout Hiring Assistant Chatbot
+Project Overview : TalentScout Hiring Assistant Chatbot
 
-## Overview
-An AI-powered hiring assistant that collects candidate details and generates technical interview questions based on the candidate's tech stack.
+TalentScout Hiring Assistant is an AI-powered, conversational chatbot designed to assist in the initial screening of candidates for technology roles.
+The chatbot interacts with candidates in a chat-like interface, collects essential profile information, maintains conversational context, and generates personalized technical interview questions based on the candidate’s background and declared tech stack.
 
-## Tech Stack
-- Python
-- Streamlit
-- OpenAI GPT
-- Prompt Engineering
+This project demonstrates:
+Prompt engineering
+Context-aware conversational flow
+Responsible data handling
+Clean UI design using Streamlit
+Practical use of Large Language Models (LLMs)
 
-## Installation
-```bash
-pip install -r requirements.txt
-streamlit run app.py
+Key Features :
+1. Conversational Hiring Assistant
+The chatbot interacts in a natural chat format rather than a traditional form.Bot responses acknowledge user inputs and guide the conversation step by step.Previous messages are preserved and displayed to maintain conversational continuity.
+
+2. Candidate Information Collection
+The chatbot collects the following information during the conversation:
+Full Name
+Email Address (validated)
+Phone Number (validated)
+Years of Experience (validated numeric input)
+Desired Role
+Current Location
+Tech Stack (comma-separated)
+Each step is context-aware and conversational.
+
+3. Context-Aware Question Generation
+Candidate details are stored in memory using Streamlit session state.A contextual prompt is dynamically constructed using:
+Candidate name
+Experience level
+Desired role
+Tech stack
+Technical interview questions are generated based on this context, making them relevant to the candidate’s profile.
+
+4. Mock LLM Mode 
+Due to API quota limitations, the application supports a mock LLM mode.
+Mock questions are:
+Generated once per session
+Randomized from a predefined pool
+
+5. Clean and Focused UI Flow
+After tech stack submission, the UI switches to a question-only view.Previous form-style prompts are hidden to keep the user focused.A styled question card improves readability and presentation.
+
+
+
+Technology Stack
+Programming Language: Python
+Frontend Framework: Streamlit
+LLM Integration: OpenAI-compatible interface (mock-enabled)
+Environment Management: python-dotenv
+Version Control: Git & GitHub
+Prompt Engineering Strategy
+
+
+Installation & Setup -Prerequisites
+Python 3.9+
+Git
+Streamlit
+
+steps to run the program:
+1. git clone https://github.com/ThanushaMH/talentscout-chatbot.git
+cd talentscout-chatbot
+2. pip install -r requirements.txt
+3. python -m streamlit run app.py
+
+Challenges & Solutions
+1. OpenAI API Quota Limitations
+Challenge: API quota errors during development.
+Solution: Implemented a mock LLM mode with randomized technical questions.
+
+2. Maintaining Conversation State in Streamlit
+Challenge: Streamlit reruns the script on every input.
+Solution: Used st.session_state to persist conversation history and candidate data.
+
+3. Chat History Inconsistencies
+Challenge: Missing bot messages in chat display.
+Solution: Ensured all bot responses are stored in session-based chat history using a dedicated helper function.
